@@ -18,19 +18,6 @@ if (isset($_SESSION['username'])) {
         $role = 'Student';
     }
 }
-
-// Check if user is logged in as teacher
-if (isset($_SESSION['teachername'])) {
-    $teachername = $_SESSION['teachername'];
-    $sql = "SELECT * FROM teacher WHERE Name='$teachername'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $name = $row['Name']; // Adjust based on your column name
-        $role = 'Teacher'; // Update role to display as "Teacher"
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -72,11 +59,11 @@ if (isset($_SESSION['teachername'])) {
          <p class="role"><?php echo $role; ?></p>
          <a href="profile.php" class="btn">View Profile</a>
          <div class="flex-btn">
-            <?php if (!isset($_SESSION['username']) && !isset($_SESSION['teachername'])) : ?>
+            <?php if (!isset($_SESSION['username'])) : ?>
                <a href="login.php" class="option-btn">Login</a>
                <a href="register.php" class="option-btn">Register</a>
             <?php else : ?>
-               <a href="logout.php" class="option-btn">Logout</a>
+               <a href="login.php" class="option-btn">Logout</a>
             <?php endif; ?>
          </div>
       </div>
@@ -91,7 +78,7 @@ if (isset($_SESSION['teachername'])) {
    <div class="profile">
       <img src="images/pic-1.jpg" class="image" alt="Profile Image">
       <h3 class="name"><?php echo $name; ?></h3>
-      <p class="role"><?php echo $role; ?></p>
+      <p class="role">Student</p>
       <a href="profile.php" class="btn">View Profile</a>
    </div>
 
@@ -99,7 +86,7 @@ if (isset($_SESSION['teachername'])) {
       <a href="home.php"><i class="fas fa-home"></i><span>Home</span></a>
       <a href="about.php"><i class="fas fa-question"></i><span>About</span></a>
       <a href="courses.php"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
-      <a href="teachers.php"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <!-- <a href="teachers.php"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a> -->
       <a href="contact.php"><i class="fas fa-headset"></i><span>Contact Us</span></a>
    </nav>
 </div>
@@ -117,7 +104,7 @@ if (isset($_SESSION['teachername'])) {
          <p class="likes">total comments : <span>12</span></p>
          <a href="#" class="inline-btn">view comments</a>
          <p class="likes">saved playlists : <span>4</span></p>
-         <a href="#" class="inline-btn">view playlists</a>
+         <a href="playlist.php" class="inline-btn">view playlists</a>
       </div>
 
       <div class="box">
@@ -146,11 +133,6 @@ if (isset($_SESSION['teachername'])) {
          </div>
       </div>
 
-      <div class="box">
-         <h3 class="title">become a tutor</h3>
-         <p class="tutor">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis, nam?</p>
-         <a href="teachers.php" class="inline-btn">get started</a>
-      </div>
 
    </div>
 
@@ -166,8 +148,7 @@ if (isset($_SESSION['teachername'])) {
          <div class="tutor">
             <img src="images/pic-2.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Ananya Singh</h3>
             </div>
          </div>
          <div class="thumb">
@@ -182,8 +163,7 @@ if (isset($_SESSION['teachername'])) {
          <div class="tutor">
             <img src="images/pic-3.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Rohan Mehta</h3>
             </div>
          </div>
          <div class="thumb">
@@ -198,8 +178,7 @@ if (isset($_SESSION['teachername'])) {
          <div class="tutor">
             <img src="images/pic-4.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Kunal Desai</h3>
             </div>
          </div>
          <div class="thumb">
@@ -214,8 +193,7 @@ if (isset($_SESSION['teachername'])) {
          <div class="tutor">
             <img src="images/pic-5.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Priya Patel</h3>
             </div>
          </div>
          <div class="thumb">
@@ -230,15 +208,29 @@ if (isset($_SESSION['teachername'])) {
          <div class="tutor">
             <img src="images/pic-6.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Aarav Sharma</h3>
             </div>
          </div>
          <div class="thumb">
             <img src="images/thumb-5.png" alt="">
             <span>10 videos</span>
          </div>
-         <h3 class="title">complete react tutorial</h3>
+         <h3 class="title">complete SASS tutorial</h3>
+         <a href="playlist.html" class="inline-btn">view playlist</a>
+      </div>
+
+      <div class="box">
+         <div class="tutor">
+            <img src="images/pic-7.jpg" alt="">
+            <div class="info">
+               <h3>Sneha Reddy</h3>
+            </div>
+         </div>
+         <div class="thumb">
+            <img src="images/thumb-6.png" alt="">
+            <span>10 videos</span>
+         </div>
+         <h3 class="title">complete PHP tutorial</h3>
          <a href="playlist.html" class="inline-btn">view playlist</a>
       </div>
 
@@ -246,10 +238,7 @@ if (isset($_SESSION['teachername'])) {
 
 </section>
 
-      <!-- Repeat similar structure for other courses -->
-   </div>
-</section>
-
+<!-- custom js file link -->
 <script src="js/script.js"></script>
 
 </body>

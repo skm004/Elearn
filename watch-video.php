@@ -1,7 +1,28 @@
 <?php
 session_start();
 include 'connect.php';
+
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$username = $_SESSION['username'];
+
+// Fetch user data from database based on username stored in session
+$sql = "SELECT * FROM user WHERE username='$username'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $username = $row['username']; // Ensure 'username' matches the column name in your database
+} else {
+    // Handle case where user data is not found (should not happen if session is valid)
+    echo "User data not found!";
+    exit();
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +62,7 @@ include 'connect.php';
       <div class="profile">
             <img src="images/pic-1.jpg" class="image" alt="">
             <h3 class="name"><?php echo $username; ?></h3>
-            <p class="role">student</p>
+            <p class="role">Student</p>
             <a href="profile.php" class="btn">View Profile</a>
             <div class="flex-btn">
                 <?php if (!isset($_SESSION['username'])) : ?>
@@ -66,7 +87,7 @@ include 'connect.php';
    <div class="profile">
         <img src="images/pic-1.jpg" class="image" alt="">
         <h3 class="name"><?php echo $username; ?></h3>
-        <p class="role">student</p>
+        <p class="role">Student</p>
         <a href="profile.php" class="btn">View Profile</a>
     </div>
 
@@ -74,7 +95,7 @@ include 'connect.php';
       <a href="home.php"><i class="fas fa-home"></i><span>Home</span></a>
       <a href="about.php"><i class="fas fa-question"></i><span>About</span></a>
       <a href="courses.php"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
-      <a href="teachers.php"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <!-- <a href="teachers.php"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a> -->
       <a href="contact.php"><i class="fas fa-headset"></i><span>Contact Us</span></a>
    </nav>
 
