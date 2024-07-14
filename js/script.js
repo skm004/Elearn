@@ -20,7 +20,7 @@ if(darkMode === 'enabled'){
 
 toggleBtn.onclick = (e) =>{
    darkMode = localStorage.getItem('dark-mode');
-   if(darkMode === 'disabled'){
+   if(darkMode === 'disabled'){A
       enableDarkMode();
    }else{
       disableDarkMode();

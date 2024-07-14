@@ -51,7 +51,7 @@ if (isset($_POST['login-username'])) {
         if ($result->num_rows > 0) {
             // Start session and store username
             $_SESSION['username'] = $username;
-            header("Location: profile.php"); // Redirect after successful login
+            header("Location: decide.php"); // Redirect after successful login
             exit();
         } else {
             echo "<script>alert('Incorrect Username or Password');</script>";
@@ -61,91 +61,75 @@ if (isset($_POST['login-username'])) {
 
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Login</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="#" rel="icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
         .error {
-            border-color: red;
+            border-color: red !important;
         }
     </style>
     <script>
+        // Function to validate password format
         function validatePassword(password) {
             var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,}$/;
             return passwordRegex.test(password);
         }
 
+        // Function to validate email or phone format
         function validateEmailOrPhone(emailOrPhone) {
             var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             var phoneRegex = /^[0-9]{10}$/;
             return emailRegex.test(emailOrPhone) || phoneRegex.test(emailOrPhone);
         }
 
-        function validateForm(formType) {
-            if (formType === 'signup') {
-                var emailOrPhone = document.getElementById("signup-email-phone").value.trim();
-                var password = document.getElementById("signup-password").value;
+        // Function to handle form validation on blur
+        function handleValidationOnBlur(inputElement, validatorFunction) {
+            inputElement.addEventListener('blur', function () {
+                var inputValue = inputElement.value.trim();
+                var isValid = validatorFunction(inputValue);
 
-                if (!validateEmailOrPhone(emailOrPhone)) {
-                    alert("Invalid email or phone number format");
-                    return false;
+                if (!isValid) {
+                    inputElement.classList.add('error');
+                } else {
+                    inputElement.classList.remove('error');
                 }
-
-                if (!password || password.length < 8 || !validatePassword(password)) {
-                    alert("Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.");
-                    return false;
-                }
-            } else if (formType === 'login') {
-                var username = document.getElementById("login-username").value.trim();
-                var password = document.getElementById("login-password").value;
-
-                if (!username) {
-                    alert("Username is required");
-                    return false;
-                }
-
-                if (!password) {
-                    alert("Password is required");
-                    return false;
-                }
-            }
-
-            return true;
+            });
         }
 
         window.onload = function () {
+            // Get input elements
             var signupEmailOrPhone = document.getElementById("signup-email-phone");
+            var signupPassword = document.getElementById("signup-password");
             var loginUsername = document.getElementById("login-username");
+            var loginPassword = document.getElementById("login-password");
 
-            signupEmailOrPhone.onblur = function () {
-                var emailOrPhone = signupEmailOrPhone.value.trim();
-                if (!validateEmailOrPhone(emailOrPhone)) {
-                    signupEmailOrPhone.classList.add("error");
-                } else {
-                    signupEmailOrPhone.classList.remove("error");
-                }
-            };
+            // Handle validation on blur for signup form
+            handleValidationOnBlur(signupEmailOrPhone, validateEmailOrPhone);
+            handleValidationOnBlur(signupPassword, validatePassword);
 
-            loginUsername.onblur = function () {
-                var username = loginUsername.value.trim();
-                if (!username) {
-                    loginUsername.classList.add("error");
-                } else {
-                    loginUsername.classList.remove("error");
-                }
-            };
+            // Handle validation on blur for login form
+            handleValidationOnBlur(loginUsername, function (username) {
+                return username.trim() !== '';
+            });
+            // handleValidationOnBlur(loginPassword, function (password) {
+            //     return password.trim() !== '';
+            // });
+            handleValidationOnBlur(loginPassword, validatePassword);
         };
+
     </script>
 </head>
-
+<style>
+        .error {
+    border-color: red !important; /* Red border for invalid input */
+}
+</style>
 <body>
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
@@ -154,7 +138,6 @@ $conn->close();
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" style="border: none;">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
     </nav>
 
     <div class="container-xxl py-2">
@@ -189,7 +172,6 @@ $conn->close();
                             </div>
                         </div>
                     </form>
-
                     <form class="shadow p-4" style="max-width: 550px; display: none;" id="signup" method="post" action="login.php" onsubmit="return validateForm('signup')">
                         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                             <h1 class="mb-5 bg-white text-center px-3">Sign<span style="color: #b34688;">Up</span></h1>
@@ -229,5 +211,4 @@ $conn->close();
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/form.js"></script>
 </body>
-
 </html>

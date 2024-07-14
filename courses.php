@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
       <div class="profile">
             <img src="images/pic-1.jpg" class="image" alt="">
             <h3 class="name"><?php echo $username; ?></h3>
-            <p class="role">student</p>
+            <p class="role">Student</p>
             <a href="profile.php" class="btn">View Profile</a>
             <div class="flex-btn">
                 <?php if (!isset($_SESSION['username'])) : ?>
@@ -86,7 +86,7 @@ if ($result->num_rows > 0) {
    <div class="profile">
         <img src="images/pic-1.jpg" class="image" alt="">
         <h3 class="name"><?php echo $username; ?></h3>
-        <p class="role">student</p>
+        <p class="role">Student</p>
         <a href="profile.php" class="btn">View Profile</a>
     </div>
 
@@ -94,7 +94,7 @@ if ($result->num_rows > 0) {
       <a href="home.php"><i class="fas fa-home"></i><span>Home</span></a>
       <a href="about.php"><i class="fas fa-question"></i><span>About</span></a>
       <a href="courses.php"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
-      <a href="teachers.php"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <!-- <a href="teachers.php"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a> -->
       <a href="contact.php"><i class="fas fa-headset"></i><span>Contact Us</span></a>
    </nav>
 
@@ -110,8 +110,7 @@ if ($result->num_rows > 0) {
          <div class="tutor">
             <img src="images/pic-2.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Ananya Singh</h3>
             </div>
          </div>
          <div class="thumb">
@@ -126,8 +125,7 @@ if ($result->num_rows > 0) {
          <div class="tutor">
             <img src="images/pic-3.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Aarav Sharma</h3>
             </div>
          </div>
          <div class="thumb">
@@ -142,8 +140,7 @@ if ($result->num_rows > 0) {
          <div class="tutor">
             <img src="images/pic-4.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Rohan Mehta</h3>
             </div>
          </div>
          <div class="thumb">
@@ -158,8 +155,7 @@ if ($result->num_rows > 0) {
          <div class="tutor">
             <img src="images/pic-5.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Priya Patel</h3>
             </div>
          </div>
          <div class="thumb">
@@ -174,8 +170,7 @@ if ($result->num_rows > 0) {
          <div class="tutor">
             <img src="images/pic-6.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Kunal Desai</h3>
             </div>
          </div>
          <div class="thumb">
@@ -190,8 +185,7 @@ if ($result->num_rows > 0) {
          <div class="tutor">
             <img src="images/pic-7.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Sneha Reddy</h3>
             </div>
          </div>
          <div class="thumb">
@@ -206,8 +200,7 @@ if ($result->num_rows > 0) {
          <div class="tutor">
             <img src="images/pic-8.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Arjun Gupta</h3>
             </div>
          </div>
          <div class="thumb">
@@ -222,8 +215,7 @@ if ($result->num_rows > 0) {
          <div class="tutor">
             <img src="images/pic-9.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Siddharth Verma</h3>
             </div>
          </div>
          <div class="thumb">
@@ -238,8 +230,7 @@ if ($result->num_rows > 0) {
          <div class="tutor">
             <img src="images/pic-1.jpg" alt="">
             <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+               <h3>Rahul Kapoor</h3>
             </div>
          </div>
          <div class="thumb">

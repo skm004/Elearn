@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
    
    <section class="flex">
 
-   <a href="home.php" class="logo"><span style="font-weight: bold;">Learn</span><span style="color: #b34688; font-weight: bold;">Stream</span></a>
+   <a href="teacherhome.php" class="logo"><span style="font-weight: bold;">Learn</span><span style="color: #b34688; font-weight: bold;">Stream</span></a>
 
       <form action="search.html" method="post" class="search-form">
          <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
@@ -61,8 +61,8 @@ if ($result->num_rows > 0) {
       <div class="profile">
             <img src="images/pic-1.jpg" class="image" alt="">
             <h3 class="name"><?php echo $username; ?></h3>
-            <p class="role">Student</p>
-            <a href="profile.php" class="btn">View Profile</a>
+            <p class="role">Teacher</p>
+            <a href="teacherprofile.php" class="btn">View Profile</a>
             <div class="flex-btn">
                 <?php if (!isset($_SESSION['username'])) : ?>
                     <a href="login.php" class="option-btn">login</a>
@@ -86,16 +86,16 @@ if ($result->num_rows > 0) {
    <div class="profile">
         <img src="images/pic-1.jpg" class="image" alt="">
         <h3 class="name"><?php echo $username; ?></h3>
-        <p class="role">Student</p>
-        <a href="profile.php" class="btn">View Profile</a>
+        <p class="role">Teacher</p>
+        <a href="teacherprofile.php" class="btn">View Profile</a>
     </div>
 
    <nav class="navbar">
-      <a href="home.php"><i class="fas fa-home"></i><span>Home</span></a>
-      <a href="about.php"><i class="fas fa-question"></i><span>About</span></a>
-      <a href="courses.php"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+      <a href="teacherhome.php"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="teacherabout.php"><i class="fas fa-question"></i><span>About</span></a>
+      <!-- <a href="teachercourses.php"><i class="fas fa-graduation-cap"></i><span>Courses</span></a> -->
       <!-- <a href="teachers.php"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a> -->
-      <a href="contact.php"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+      <a href="teachercontact.php"><i class="fas fa-headset"></i><span>Contact Us</span></a>
    </nav>
 
 </div>

@@ -62,7 +62,7 @@ if ($result->num_rows > 0) {
       <div class="profile">
             <img src="images/pic-1.jpg" class="image" alt="">
             <h3 class="name"><?php echo $username; ?></h3>
-            <p class="role">student</p>
+            <p class="role">Student</p>
             <a href="profile.php" class="btn">View Profile</a>
             <div class="flex-btn">
                 <?php if (!isset($_SESSION['username'])) : ?>
@@ -87,7 +87,7 @@ if ($result->num_rows > 0) {
    <div class="profile">
         <img src="images/pic-1.jpg" class="image" alt="">
         <h3 class="name"><?php echo $username; ?></h3>
-        <p class="role">student</p>
+        <p class="role">Student</p>
         <a href="profile.php" class="btn">View Profile</a>
     </div>
 
@@ -109,8 +109,6 @@ if ($result->num_rows > 0) {
       <input type="text" name="name" placeholder="shaikh anas" maxlength="50" class="box">
       <p>update email</p>
       <input type="email" name="email" placeholder="shaikh@gmail.come" maxlength="50" class="box">
-      <p>previous password</p>
-      <input type="password" name="old_pass" placeholder="enter your old password" maxlength="20" class="box">
       <p>new password</p>
       <input type="password" name="new_pass" placeholder="enter your old password" maxlength="20" class="box">
       <p>confirm password</p>

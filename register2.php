@@ -36,7 +36,7 @@
       <div class="profile">
             <img src="images/pic-1.jpg" class="image" alt="">
             <h3 class="name"><?php echo $username; ?></h3>
-            <p class="role">student</p>
+            <p class="role">Student</p>
             <a href="profile.php" class="btn">View Profile</a>
             <div class="flex-btn">
                 <?php if (!isset($_SESSION['username'])) : ?>
@@ -61,7 +61,7 @@
    <div class="profile">
         <img src="images/pic-1.jpg" class="image" alt="">
         <h3 class="name"><?php echo $username; ?></h3>
-        <p class="role">student</p>
+        <p class="role">Student</p>
         <a href="profile.php" class="btn">View Profile</a>
     </div>
 
